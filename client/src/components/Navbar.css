@@ -197,6 +197,20 @@
     }
 }
 
+@media (max-width: 380px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+    }
+
+    .navbar-right {
+        gap: 0.5rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+}
+
 .nav-icon {
     width: 1.2rem;
     height: 1.2rem;

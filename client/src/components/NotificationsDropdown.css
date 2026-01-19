@@ -52,7 +52,16 @@
 
 @media (max-width: 768px) {
     .notifications-dropdown {
-        width: 300px;
-        right: 20px;
+        width: 85vw;
+        right: -50px;
+        /* Pull it slightly off-screen if parent is relatively positioned, or assume parent is the wrapper */
+        position: absolute;
+    }
+}
+
+@media (max-width: 480px) {
+    .notifications-dropdown {
+        width: 90vw;
+        right: -60px;
     }
 }

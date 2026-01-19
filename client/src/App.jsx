@@ -78,7 +78,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={user ? <Navigate to="/home" replace /> : <Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={user ? <Navigate to="/home" replace /> : <Register />} />
         <Route path="/home" element={
           <PrivateRoute>
