@@ -18,8 +18,7 @@ const SearchPage = () => {
             if (query) {
                 setLoading(true);
                 try {
-                    const isProd = import.meta.env.PROD;
-                    const API_URL = import.meta.env.VITE_API_URL || (isProd ? '' : 'http://localhost:5001');
+                    const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
                     const res = await axios.get(`${API_URL}/api/movies/search?query=${query}`);
                     setResults(res.data);
                 } catch (err) {
