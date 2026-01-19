@@ -27,9 +27,11 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Socket.io for real-time notifications
+    // Socket.io for real-time notifications (Disabled in production due to Vercel/Serverless constraints)
     useEffect(() => {
-        const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
+        if (import.meta.env.PROD) return; // Vercel doesn't support WebSockets on serverless functions
+
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
         const socket = io(API_URL);
 
         socket.on('notification', (notif) => {

@@ -23,7 +23,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
       try {
         const [trendRes, actionRes, comedyRes, horrorRes] = await Promise.all([
@@ -41,7 +41,7 @@ const Home = () => {
       } finally {
         setLoading(false);
       }
-    };
+    }
     fetchData();
   }, []);
 

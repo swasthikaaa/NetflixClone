@@ -13,7 +13,7 @@ const CategoryPage = ({ title, type }) => {
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
-        const fetchMovies = async () => {
+        async function fetchMovies() {
             setLoading(true);
             const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
             try {
@@ -24,8 +24,8 @@ const CategoryPage = ({ title, type }) => {
             } finally {
                 setLoading(false);
             }
-        };
-        fetchData();
+        }
+        fetchMovies();
         window.scrollTo(0, 0);
     }, [type]);
 
