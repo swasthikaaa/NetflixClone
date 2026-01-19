@@ -1,0 +1,69 @@
+.payment-modal {
+    background-color: #181818;
+    width: 90%;
+    max-width: 450px;
+    padding: 3rem;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    margin: auto;
+    color: white;
+}
+
+.payment-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    color: #e50914;
+    margin-bottom: 1rem;
+}
+
+.payment-header p {
+    color: #8c8c8c;
+    margin-top: 0.5rem;
+}
+
+.plan-summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.card-input-wrapper {
+    background: #333;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.pay-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.payment-error {
+    color: #e50914;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.security-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #8c8c8c;
+    margin-top: 1.5rem;
+}

@@ -1,0 +1,90 @@
+.category-page {
+    background-color: var(--netflix-black);
+    min-height: 100vh;
+}
+
+.category-content {
+    padding: 0 4rem 5rem;
+    margin-top: -6rem;
+    position: relative;
+    z-index: 10;
+}
+
+.category-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.content-card {
+    position: relative;
+    transition: transform 0.3s;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.content-card:hover {
+    transform: scale(1.05);
+    z-index: 20;
+}
+
+.content-card img {
+    width: 100%;
+    display: block;
+}
+
+.content-info {
+    padding: 0.5rem;
+    background-color: #181818;
+}
+
+.content-info h4 {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.loading-screen {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--netflix-black);
+}
+
+.loading-logo {
+    color: var(--netflix-red);
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-content {
+        padding: 0 2rem 5rem;
+    }
+}

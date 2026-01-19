@@ -1,0 +1,58 @@
+.notifications-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 120px;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid #333;
+    border-radius: 4px;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+}
+
+.notif-header {
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    color: white;
+}
+
+.notif-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 1rem;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.notif-item:hover {
+    background-color: #141414;
+}
+
+.notif-message {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #e5e5e5;
+}
+
+.notif-date {
+    font-size: 0.75rem;
+    color: #8c8c8c;
+}
+
+.no-notif {
+    padding: 2rem;
+    text-align: center;
+    color: #8c8c8c;
+}
+
+@media (max-width: 768px) {
+    .notifications-dropdown {
+        width: 300px;
+        right: 20px;
+    }
+}
