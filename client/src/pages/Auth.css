@@ -76,10 +76,42 @@
 
 @media (max-width: 768px) {
     .auth-overlay {
+        padding: 1.5rem;
+    }
+
+    .auth-box {
+        padding: 3rem 2rem;
+        max-width: 400px;
+    }
+
+    .auth-logo {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        background: black;
+    }
+
+    .auth-overlay {
         padding: 1rem;
     }
 
     .auth-box {
-        padding: 2rem;
+        background-color: transparent;
+        padding: 1rem;
+        max-width: 100%;
+        align-self: flex-start;
+        margin-top: 2rem;
+    }
+
+    .auth-box h1 {
+        font-size: 1.8rem;
+    }
+
+    .auth-logo {
+        font-size: 1.8rem;
     }
 }

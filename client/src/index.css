@@ -127,3 +127,18 @@ body {
 .Toastify__close-button:hover {
   opacity: 1;
 }
+
+@media (max-width: 600px) {
+
+  .btn-netflix,
+  .btn-secondary {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .Toastify__toast-container {
+    width: 90% !important;
+    left: 5% !important;
+    margin: 0 !important;
+  }
+}

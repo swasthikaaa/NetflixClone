@@ -64,7 +64,30 @@
 }
 
 @media (max-width: 768px) {
+    .footer {
+        padding: 2rem 1.5rem;
+    }
+
     .footer-links {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .footer-container {
+        text-align: center;
+    }
+
+    .footer-column {
+        align-items: center;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
     }
 }

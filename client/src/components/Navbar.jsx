@@ -14,6 +14,7 @@ const Navbar = () => {
     const [showNotifs, setShowNotifs] = useState(false);
     const [notifications, setNotifications] = useState([]);
     const [unreadCount, setUnreadCount] = useState(0);
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
@@ -77,12 +78,15 @@ const Navbar = () => {
         <nav className={`navbar ${isScrolled ? 'scrolled' : 'transparent'}`}>
             <div className="navbar-left">
                 <Link to="/home" className="logo">NETFLIX</Link>
-                <ul className="nav-links">
-                    <li><Link to="/home" className={isActive('/home') ? 'active' : ''}>Home</Link></li>
-                    <li><Link to="/tv-shows" className={isActive('/tv-shows') ? 'active' : ''}>TV Shows</Link></li>
-                    <li><Link to="/movies" className={isActive('/movies') ? 'active' : ''}>Movies</Link></li>
-                    <li><Link to="/new-popular" className={isActive('/new-popular') ? 'active' : ''}>New & Popular</Link></li>
-                    <li><Link to="/profile" className={isActive('/profile') ? 'active' : ''}>My List</Link></li>
+                <div className="mobile-browse" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+                    Browse <span className={`caret ${showMobileMenu ? 'open' : ''}`}>▼</span>
+                </div>
+                <ul className={`nav-links ${showMobileMenu ? 'mobile-show' : ''}`}>
+                    <li onClick={() => setShowMobileMenu(false)}><Link to="/home" className={isActive('/home') ? 'active' : ''}>Home</Link></li>
+                    <li onClick={() => setShowMobileMenu(false)}><Link to="/tv-shows" className={isActive('/tv-shows') ? 'active' : ''}>TV Shows</Link></li>
+                    <li onClick={() => setShowMobileMenu(false)}><Link to="/movies" className={isActive('/movies') ? 'active' : ''}>Movies</Link></li>
+                    <li onClick={() => setShowMobileMenu(false)}><Link to="/new-popular" className={isActive('/new-popular') ? 'active' : ''}>New & Popular</Link></li>
+                    <li onClick={() => setShowMobileMenu(false)}><Link to="/profile" className={isActive('/profile') ? 'active' : ''}>My List</Link></li>
                 </ul>
             </div>
 

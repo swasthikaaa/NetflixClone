@@ -226,10 +226,51 @@
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 1rem;
+    }
+
+    .profile-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .user-name-display {
+        font-size: 1.2rem;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 600px) {
     .profile-card {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.2rem;
         align-items: flex-start;
+        padding: 1.2rem;
+    }
+
+    .profile-info {
+        gap: 1rem;
+    }
+
+    .large-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .edit-form {
+        padding: 1.2rem;
+    }
+
+    .avatar-options {
+        gap: 0.8rem;
+    }
+
+    .picker-img {
+        width: 50px;
+        height: 50px;
     }
 }

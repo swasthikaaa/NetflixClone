@@ -67,3 +67,14 @@
     color: #8c8c8c;
     margin-top: 1.5rem;
 }
+
+@media (max-width: 480px) {
+    .payment-modal {
+        padding: 2rem 1.5rem;
+        width: 95%;
+    }
+
+    .payment-header h2 {
+        font-size: 1.5rem;
+    }
+}

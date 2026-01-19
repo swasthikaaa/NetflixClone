@@ -143,13 +143,49 @@
     border-radius: 2px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .row {
         margin-left: 2rem;
     }
 
     .row-poster-container {
-        min-width: 120px;
-        height: 180px;
+        min-width: 140px;
+        height: 210px;
+    }
+}
+
+@media (max-width: 600px) {
+    .row {
+        margin-left: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .row-title {
+        font-size: 1.1rem;
+    }
+
+    .row-posters {
+        padding: 1rem 0;
+        gap: 0.5rem;
+    }
+
+    .row-poster-container {
+        min-width: 110px;
+        height: 165px;
+    }
+
+    /* Disable hover scale on mobile to avoid layout shifts */
+    .row-poster-container:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Keep the overlay hidden on mobile or make it tap-responsive (default to hidden is safer for Netflix feel) */
+    .row-poster-container:hover .poster-overlay {
+        opacity: 0;
+    }
+
+    .row-poster-container:hover .row-poster {
+        filter: none;
     }
 }
