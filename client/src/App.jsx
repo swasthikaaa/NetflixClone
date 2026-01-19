@@ -17,24 +17,35 @@ import './index.css';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [shows, setShows] = useState([]);
+  const [actionMovies, setActionMovies] = useState([]);
+  const [comedyMovies, setComedyMovies] = useState([]);
+  const [horrorMovies, setHorrorMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
       try {
-        const [trendRes, showsRes] = await Promise.all([
+        const [trendRes, actionRes, comedyRes, horrorRes] = await Promise.all([
           axios.get(`${API_URL}/movies/trending`),
+          axios.get(`${API_URL}/movies/type/movies`),
+          axios.get(`${API_URL}/movies/type/popular`),
           axios.get(`${API_URL}/movies/type/tv`)
         ]);
         setMovies(trendRes.data);
-        setShows(showsRes.data);
+        setActionMovies(actionRes.data);
+        setComedyMovies(comedyRes.data);
+        setHorrorMovies(horrorRes.data);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
+
+  if (loading) return <div style={{ backgroundColor: '#141414', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>Loading Netflix Experience...</div>;
 
   return (
     <div className="app fade-in">
@@ -42,9 +53,10 @@ const Home = () => {
       <Banner movie={movies[0]} />
       <div className="rows-container" style={{ marginTop: '-4rem', position: 'relative', zIndex: 10 }}>
         <Row title="Trending Now" movies={movies} />
-        <Row title="TV Shows" movies={shows} />
+        <Row title="Action Movies" movies={actionMovies} />
+        <Row title="TV Shows" movies={horrorMovies} />
+        <Row title="Popular on Netflix" movies={comedyMovies} />
         <Row title="Netflix Originals" movies={movies} />
-        <Row title="Action Movies" movies={movies} />
       </div>
 
       <Footer />

@@ -237,7 +237,7 @@ app.get('/api/movies/type/:category', async (req, res) => {
     else if (category === 'popular') endpoint = '/movie/popular';
 
     if (!TMDB_API_KEY) {
-        return res.status(404).json({ error: 'TMDB API KEY missing' });
+        return res.json(fallback);
     }
 
     try {
@@ -245,29 +245,31 @@ app.get('/api/movies/type/:category', async (req, res) => {
         const movies = response.data.results
             .filter(m => !(m.title || m.name || '').toLowerCase().includes('netflix'))
             .map(processMovieItem);
-        res.json(movies);
+        res.json(movies.length > 0 ? movies : fallback);
     } catch (err) {
-        res.status(500).json({ error: 'Failed to fetch movies' });
+        res.json(fallback);
     }
 });
 
 app.get('/api/movies/trending', async (req, res) => {
-    if (!TMDB_API_KEY) return res.status(404).json({ error: 'TMDB API KEY missing' });
+    if (!TMDB_API_KEY) return res.json(MOCK_MOVIES);
     try {
         const response = await axios.get(`${TMDB_BASE_URL}/trending/movie/week?api_key=${TMDB_API_KEY}`);
         res.json(response.data.results.map(processMovieItem));
-    } catch (err) { res.status(500).json({ error: 'Failed to fetch trending movies' }); }
+    } catch (err) { res.json(MOCK_MOVIES); }
 });
 
 app.get('/api/movies/search', async (req, res) => {
     const { query } = req.query;
     if (!query) return res.json([]);
-    if (!TMDB_API_KEY) return res.status(404).json({ error: 'TMDB API KEY missing' });
+    if (!TMDB_API_KEY) {
+        return res.json(MOCK_MOVIES.filter(m => (m.title || '').toLowerCase().includes(query.toLowerCase())));
+    }
 
     try {
         const response = await axios.get(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${query}`);
         res.json(response.data.results.map(processMovieItem));
-    } catch (err) { res.status(500).json({ error: 'Search failed' }); }
+    } catch (err) { res.json(MOCK_MOVIES); }
 });
 
 // For Vercel Serverless
