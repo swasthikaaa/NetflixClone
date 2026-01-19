@@ -15,9 +15,9 @@ const CategoryPage = ({ title, type }) => {
     useEffect(() => {
         const fetchMovies = async () => {
             setLoading(true);
-            const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
+            const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
             try {
-                const res = await axios.get(`${API_URL}/api/movies/type/${type}`);
+                const res = await axios.get(`${API_URL}/movies/type/${type}`);
                 setContent(res.data);
             } catch (error) {
                 console.error(`Error fetching ${type}:`, error);

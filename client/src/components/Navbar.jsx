@@ -43,8 +43,8 @@ const Navbar = () => {
     const fetchInitialNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
-            const res = await axios.get(`${API_URL}/api/user/notifications`, {
+            const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
+            const res = await axios.get(`${API_URL}/user/notifications`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setNotifications(res.data);

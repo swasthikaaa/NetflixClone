@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
 
-const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
+const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            axios.get(`${API_URL}/api/user/profile`, {
+            axios.get(`${API_URL}/user/profile`, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(res => {
                 setUser(res.data);
@@ -29,14 +29,14 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) => {
-        const res = await axios.post(`${API_URL}/api/auth/login`, { email, password });
+        const res = await axios.post(`${API_URL}/auth/login`, { email, password });
         localStorage.setItem('token', res.data.token);
         setUser(res.data.user);
         return res.data;
     };
 
     const register = async (email, password) => {
-        await axios.post(`${API_URL}/api/auth/register`, { email, password });
+        await axios.post(`${API_URL}/auth/register`, { email, password });
     };
 
     const logout = () => {
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
     const updateProfile = async (data) => {
         const token = localStorage.getItem('token');
-        const res = await axios.put(`${API_URL}/api/user/profile`, data, {
+        const res = await axios.put(`${API_URL}/user/profile`, data, {
             headers: { Authorization: `Bearer ${token}` }
         });
         setUser(res.data.user);
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 
     const updatePlan = async (plan) => {
         const token = localStorage.getItem('token');
-        const res = await axios.put(`${API_URL}/api/user/plan`, { plan }, {
+        const res = await axios.put(`${API_URL}/user/plan`, { plan }, {
             headers: { Authorization: `Bearer ${token}` }
         });
         setUser(prev => ({ ...prev, plan: res.data.plan }));

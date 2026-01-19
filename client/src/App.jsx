@@ -21,11 +21,11 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
+      const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
       try {
         const [trendRes, showsRes] = await Promise.all([
-          axios.get(`${API_URL}/api/movies/trending`),
-          axios.get(`${API_URL}/api/movies/type/tv`)
+          axios.get(`${API_URL}/movies/trending`),
+          axios.get(`${API_URL}/movies/type/tv`)
         ]);
         setMovies(trendRes.data);
         setShows(showsRes.data);

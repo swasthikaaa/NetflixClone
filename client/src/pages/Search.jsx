@@ -18,8 +18,8 @@ const SearchPage = () => {
             if (query) {
                 setLoading(true);
                 try {
-                    const API_URL = import.meta.env.PROD ? '' : (import.meta.env.VITE_API_URL || 'http://localhost:5001');
-                    const res = await axios.get(`${API_URL}/api/movies/search?query=${query}`);
+                    const API_URL = import.meta.env.PROD ? '/api' : (import.meta.env.VITE_API_URL || 'http://localhost:5001/api');
+                    const res = await axios.get(`${API_URL}/movies/search?query=${query}`);
                     setResults(res.data);
                 } catch (err) {
                     console.error(err);
