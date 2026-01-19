@@ -19,6 +19,11 @@
             "dest": "server/server.js"
         },
         {
+            "src": "/(.*)",
+            "dest": "client/$1",
+            "check": true
+        },
+        {
             "src": "/((?!api/.*).*)",
             "dest": "client/index.html"
         }
