@@ -180,12 +180,12 @@
         box-shadow: none;
     }
 
-    /* Keep the overlay hidden on mobile or make it tap-responsive (default to hidden is safer for Netflix feel) */
+    /* Enable hover/tap effect on mobile for details */
     .row-poster-container:hover .poster-overlay {
-        opacity: 0;
+        opacity: 1;
     }
 
     .row-poster-container:hover .row-poster {
-        filter: none;
+        filter: brightness(0.6);
     }
 }

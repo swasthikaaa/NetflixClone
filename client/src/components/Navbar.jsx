@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Bell, User as UserIcon } from 'lucide-react';
+import { Search, Bell, User as UserIcon, Menu } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -79,7 +79,8 @@ const Navbar = () => {
             <div className="navbar-left">
                 <Link to="/home" className="logo">NETFLIX</Link>
                 <div className="mobile-browse" onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                    Browse <span className={`caret ${showMobileMenu ? 'open' : ''}`}>▼</span>
+                    <Menu className="hamburger-icon" />
+                    <span className={`caret ${showMobileMenu ? 'open' : ''}`}>▼</span>
                 </div>
                 <ul className={`nav-links ${showMobileMenu ? 'mobile-show' : ''}`}>
                     <li onClick={() => setShowMobileMenu(false)}><Link to="/home" className={isActive('/home') ? 'active' : ''}>Home</Link></li>
