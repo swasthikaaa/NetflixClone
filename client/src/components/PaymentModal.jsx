@@ -24,7 +24,8 @@ const CheckoutForm = ({ plan, onSuccess, onClose }) => {
         try {
             const token = localStorage.getItem('token');
             // We still create the intent on backend to keep it realistic
-            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+            const isProd = import.meta.env.PROD;
+            const API_URL = import.meta.env.VITE_API_URL || (isProd ? '' : 'http://localhost:5001');
             await axios.post(`${API_URL}/api/user/create-payment-intent`,
                 { plan },
                 { headers: { Authorization: `Bearer ${token}` } }

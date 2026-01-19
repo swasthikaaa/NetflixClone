@@ -21,7 +21,8 @@ const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const isProd = import.meta.env.PROD;
+      const API_URL = import.meta.env.VITE_API_URL || (isProd ? '' : 'http://localhost:5001');
       try {
         const [trendRes, showsRes] = await Promise.all([
           axios.get(`${API_URL}/api/movies/trending`),

@@ -29,7 +29,8 @@ const Navbar = () => {
 
     // Socket.io for real-time notifications
     useEffect(() => {
-        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+        const isProd = import.meta.env.PROD;
+        const API_URL = import.meta.env.VITE_API_URL || (isProd ? '' : 'http://localhost:5001');
         const socket = io(API_URL);
 
         socket.on('notification', (notif) => {
@@ -43,7 +44,8 @@ const Navbar = () => {
     const fetchInitialNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+            const isProd = import.meta.env.PROD;
+            const API_URL = import.meta.env.VITE_API_URL || (isProd ? '' : 'http://localhost:5001');
             const res = await axios.get(`${API_URL}/api/user/notifications`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
