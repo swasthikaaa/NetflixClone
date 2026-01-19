@@ -85,7 +85,7 @@ const AppRoutes = () => {
             <Home />
           </PrivateRoute>
         } />
-        <Route path="/" element={<Navigate to={user ? "/home" : "/login"} replace />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/tv-shows" element={
           <PrivateRoute>
             <CategoryPage title="TV Shows" type="tv" />
